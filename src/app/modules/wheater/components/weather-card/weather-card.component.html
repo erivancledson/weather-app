@@ -1,0 +1,65 @@
+<!--só rederiza a div quando tiver dados no componente pai-->
+<div class="container" *ngIf="wheatherDatasInput">
+    <div class="upper-data">
+      <!--quando for maior que 15 graus-->
+       <img src="../../../../../assets/sun.jpg" *ngIf="wheatherDatasInput.main.temp > 15">
+       <!--quando estiver  a baixo de 15 graus-->
+       <img src="../../../../../assets/cold1.jpg" *ngIf="wheatherDatasInput.main.temp <= 15">
+
+      <div class="weather-data">
+        <div class="location">{{ wheatherDatasInput.name }}</div> <!--nome da cidade-->
+        <div class="temperature"> {{wheatherDatasInput.main.temp | number: "1.0-0"}}°C</div> <!--temperatura do momento-->
+      </div>
+
+      </div>
+
+    <div class="lower-data">
+      <div class="more-info-label">Mais informações</div>
+
+      <div class="more-info-container">
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="minTemperatureIcon"></fa-icon>
+            <span>Mínima</span>
+          </div>
+          <div class="info-block-value">
+            <!--exibir a temperatura minima-->
+            {{ wheatherDatasInput.main.temp_min | number: "1.0-0"}}°C <!--exibe somente os dois primeiros numeros-->
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="maxTemperatureIcon"></fa-icon>
+            <span>Máxima</span>
+          </div>
+
+          <div class="info-block-value">
+            {{ wheatherDatasInput.main.temp_max | number: "1.0-0"}}°C
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="humidityIcon"></fa-icon>
+            <span>Humidade</span>
+          </div>
+
+          <div class="info-block-value">
+            {{ wheatherDatasInput.main.humidity }}%
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="windIcon"></fa-icon>
+            <span>Vento</span>
+          </div>
+
+          <div class="info-block-value">
+            {{ wheatherDatasInput.wind.speed }} Km/h
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

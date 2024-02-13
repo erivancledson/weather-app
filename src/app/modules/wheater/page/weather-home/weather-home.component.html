@@ -1,0 +1,22 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()"> <!--toda vez que temos um formulario usar on submit funciona para enter e cick de botão-->
+    <input type="text" placeholder="Buscar Localização"
+    name="city" [(ngModel)]="initialCityName"
+    /> <!--[(ngModel)]="initialCityName"  faz o to way data bind, enviado os dados para o componente-->
+  </form> <!--[(ngModel)] = escuta a propriedade passada-->
+
+  <span (click)="onSubmit()">
+    <fa-icon
+    animation="fade"
+    style="--fa-animation-duration: 5s; cursor:  pointer"
+    size="lg"
+    class="search-icon"
+    [icon]="searchIcon"
+    >
+
+    </fa-icon>
+  </span>
+</div>
+<!--componente filho, pega os dados da weatherDatas e envia para wheatherDatasInput que é o input que vai receber os dados -->
+<!--*ngIf="weatherDatas" só exibe quando tiver dados-->
+<app-weather-card *ngIf="weatherDatas" [wheatherDatasInput]="weatherDatas"></app-weather-card>
